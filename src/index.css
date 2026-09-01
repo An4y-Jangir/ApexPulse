@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@theme {
+  --color-f1-dark: #06070B;
+  --color-f1-darker: #020305;
+  --color-f1-glass: rgba(255, 255, 255, 0.03);
+  --color-f1-glass-hover: rgba(255, 255, 255, 0.05);
+  --color-f1-border: rgba(255, 255, 255, 0.1);
+  --color-f1-accent: #EF4444;
+  --color-sector-purple: #A855F7;
+  --color-sector-cyan: #06B6D4;
+  --color-sector-green: #22C55E;
+  --color-sector-yellow: #FACC15;
+  --color-tyre-soft: #EF4444;
+  --color-tyre-medium: #FACC15;
+  --color-tyre-hard: #F3F4F6;
+  --color-tyre-inter: #06B6D4;
+  --color-tyre-wet: #2563EB;
+}
+
+@layer base {
+  html, body, #root {
+    background-color: #06070B;
+    color: #F3F4F6;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Utilities for F1 Telemetry Visual Style */
+.cyber-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+}
+
+.scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.15) 50%
+  );
+  background-size: 100% 4px;
+}
+
+.neon-glow-green {
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.15), 0 0 20px rgba(34, 197, 94, 0.05);
+}
+
+.neon-glow-red {
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.15), 0 0 20px rgba(239, 68, 68, 0.05);
+}
+
+.neon-glow-purple {
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.15), 0 0 20px rgba(168, 85, 247, 0.05);
+}
+
+.neon-glow-yellow {
+  box-shadow: 0 0 10px rgba(250, 204, 21, 0.15), 0 0 20px rgba(250, 204, 21, 0.05);
+}
+
+.neon-glow-cyan {
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.15), 0 0 20px rgba(6, 182, 212, 0.05);
+}
+
+/* Glassmorphic panel style - Frosted Cards */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-panel-hover:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.02);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #07090E;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Telemetry scan wave animation */
+@keyframes telemetry-pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 8px currentColor;
+  }
+}
+
+.animate-telemetry-pulse {
+  animation: telemetry-pulse 2s infinite ease-in-out;
+}
+
+@keyframes scan-vertical {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-scan-vertical {
+  animation: scan-vertical 8s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: inline-block;
+  animation: marquee 20s linear infinite;
+}
